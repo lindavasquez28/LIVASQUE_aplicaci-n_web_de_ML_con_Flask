@@ -1,13 +1,13 @@
-from flask import Flask, render_template, request
-import pickle
 import os
+import pickle
+from flask import Flask, render_template, request
 
-# Flask buscara la carpeta src/templates/
 app = Flask(__name__)
 
-ruta_actual = os.path.dirname(__file__)
+ruta_actual = os.path.abspath(os.path.dirname(__file__))
 ruta_modelo = os.path.join(ruta_actual, "..", "models", "modelo_listo.pkl")
 
+# Carga
 modelo_cargado = pickle.load(open(ruta_modelo, "rb"))
 
 # ciccionario para traducir los numeros a texto
